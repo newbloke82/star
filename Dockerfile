@@ -1,4 +1,4 @@
-FROM centos:centos7.8.2003
+FROM centos:centos7
 
 ENV RUSTUP_HOME=/usr/local/rustup \
     CARGO_HOME=/usr/local/cargo \
@@ -24,4 +24,8 @@ RUN set -eux; \
 ADD . /star
 WORKDIR /star
 RUN cargo build
-ENTRYPOINT ["target/debug/star-probe"]
+RUN yum group remove -y "Development tools" && \
+    yum remove -y kernel-headers kernel-debug-devel && \
+    yum clean all && \
+    rm -rf /var/cache/yum
+ENTRYPOINT ["target/debug/star-probe --resources-file=/star/probes.json"]

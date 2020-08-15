@@ -1,0 +1,14 @@
+[
+  {
+    "id": "F",
+    "url": "http://frontend.stars:80/status"
+  },
+  {
+    "id": "B",
+    "url": "http://backend.stars:6379/status"
+  },
+  {
+    "id": "C",
+    "url": "http://client.client:9000/status"
+  }
+]
